@@ -1,6 +1,8 @@
 # Nakiyah Dhariwala - Assignment 2
 # Week 2
 
+[![CI](https://github.com/nogibjj/Nakiyah_Assignment2/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Nakiyah_Assignment2/actions/workflows/cicd.yml)
+
 In the first assignment, we developed a Python template incorporating best practices for organizing a Python project. For this second assignment, we will build on that template to write a Python script that reads a CSV file, utilizes Pandas to generate descriptive statistics, and produces both statistical outputs and visualizations.
 
 ## Repository contents:
