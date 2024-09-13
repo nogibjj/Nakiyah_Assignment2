@@ -15,9 +15,9 @@ def test_CleanData():
                   2,Female,Doctor,6,4
                   3,Male,Engineer,8,5
                   4,Female,Lawyer,5,2"""
-    
+
     df = pd.read_csv(StringIO(csv_data))
-    
+
     RequiredColumns = ["Gender", "Occupation", "Sleep Duration", "Quality of Sleep"]
     DuplicateValues = "Person ID"
 
@@ -41,9 +41,9 @@ def test_SummaryStatistics():
                   2,Female,Doctor,6,4
                   3,Male,Engineer,8,5
                   4,Female,Lawyer,5,2"""
-    
+
     df = pd.read_csv(StringIO(csv_data))
-    
+
     summary = summaryStatistics(df)
     print(summary)
 
@@ -79,7 +79,7 @@ def test_StackPlot():
                   3,Male,Engineer,8,5
                   4,Female,Lawyer,5,2
                   5,Male,Teacher,7,4"""
-    
+
     df = pd.read_csv(StringIO(csv_data))
 
     try:
@@ -103,7 +103,7 @@ def test_BarPlot():
                   4,Female,Lawyer,5,2
                   5,Male,Teacher,7,4
                   6,Female,Engineer,6,3"""
-    
+
     df = pd.read_csv(StringIO(csv_data))
 
     try:
