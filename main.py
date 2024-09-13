@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import fpdf
+from fpdf import FPDF
 
 # Function reading the csv file
 def readData(df):
@@ -69,3 +69,52 @@ SummaryStatistics = summaryStatistics(CleanData)
 PlotStacked = stackPlot(CleanData, SleepHours, Occupation)
 BarPlot = barPlot(CleanData, SleepQuality, Occupation, Gender)
 
+## Writing data into pdf
+
+# Initialize PDF
+pdf = FPDF(format='letter')
+pdf.add_page()
+pdf.set_font("Arial", size=12)
+
+# Add Title
+pdf.set_font("Arial", 'B', 14)
+pdf.cell(200, 10, txt="Summary Statistics", ln=True, align='C')
+pdf.ln(10)
+
+# Add Summary Statistics
+pdf.set_font("Arial", size=12)
+pdf.multi_cell(0, 10, txt="Summary Statistics:\n")
+for col in SummaryStatistics.columns:
+    pdf.cell(0, 10, txt=f"{col}: {SummaryStatistics[col].to_list()}", ln=True)
+
+# Add Plots to PDF
+pdf.ln(10)
+pdf.set_font("Arial", 'B', 14)
+pdf.cell(200, 10, txt="Stacked Plot", ln=True, align='C')
+pdf.ln(10)
+
+# Save Stacked Plot to file
+stack_plot_file = "stack_plot.png"
+stackPlot(CleanData, SleepHours, Occupation)
+plt.savefig(stack_plot_file)
+plt.close()
+
+# Add Stacked Plot to PDF
+pdf.image(stack_plot_file, x=10, y=pdf.get_y(), w=180)
+pdf.ln(10)
+
+pdf.set_font("Arial", 'B', 14)
+pdf.cell(200, 10, txt="Bar Plot", ln=True, align='C')
+pdf.ln(10)
+
+# Save Bar Plot to file
+bar_plot_file = "bar_plot.png"
+barPlot(CleanData, SleepQuality, Occupation, Gender)
+plt.savefig(bar_plot_file)
+plt.close()
+
+# Add Bar Plot to PDF
+pdf.image(bar_plot_file, x=10, y=pdf.get_y(), w=180)
+
+# Save PDF
+pdf.output("summary_statistics_report.pdf")
