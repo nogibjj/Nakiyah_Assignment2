@@ -87,7 +87,7 @@ def writeToPDF(Summary, graph1, graph2):
     pdf.set_font("Calibri", size=12)
 
     # Add Title
-    pdf.set_font("Arial", "B", 14)
+    pdf.set_font("Calibri", "B", 14)
     pdf.cell(200, 10, txt="Summary Statistics", ln=True, align="C")
     pdf.ln(10)
 
@@ -96,14 +96,14 @@ def writeToPDF(Summary, graph1, graph2):
     col_width = page_width / (len(Summary.columns) + 1)  # Divide width equally among all columns
 
     # Add headers
-    pdf.set_font("Arial", 'B', 12)
+    pdf.set_font("Calibri", 'B', 12)
     pdf.cell(col_width, 10, "Metric", border=1)
     for col in SummaryStatistics.columns:
         pdf.cell(col_width, 10, col, border=1)
     pdf.ln()
 
     # Add rows for each metric
-    pdf.set_font("Arial", size=12)
+    pdf.set_font("Calibri", size=12)
     for i, row in SummaryStatistics.iterrows():
         pdf.cell(col_width, 10, str(i), border=1)
         for col in SummaryStatistics.columns:
@@ -113,7 +113,7 @@ def writeToPDF(Summary, graph1, graph2):
     # Add Plots to PDF
     pdf.add_page()
     pdf.ln(10)
-    pdf.set_font("Arial", "B", 14)
+    pdf.set_font("Calibri", "B", 14)
     pdf.cell(200, 10, txt="Stacked Plot", ln=True, align="C")
     pdf.ln(10)
 
@@ -122,7 +122,7 @@ def writeToPDF(Summary, graph1, graph2):
     pdf.ln(10)
 
     pdf.add_page()
-    pdf.set_font("Arial", "B", 14)
+    pdf.set_font("Calibri", "B", 14)
     pdf.cell(200, 10, txt="Bar Plot", ln=True, align="C")
     pdf.ln(10)
 
@@ -131,5 +131,6 @@ def writeToPDF(Summary, graph1, graph2):
 
     # Save PDF
     pdf.output("summary_statistics_report.pdf")
+    return "PDF file created"
 
 Output = writeToPDF(SummaryStatistics, StackPlot, BarPlot)
