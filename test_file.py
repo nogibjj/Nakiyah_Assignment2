@@ -1,7 +1,7 @@
 import pandas as pd
 from io import StringIO
-import matplotlib.pyplot as plt
-from main import readData, cleanData, summaryStatistics, stackPlot, barPlot
+from main import cleanData, summaryStatistics, stackPlot, barPlot, writeToPDF
+import os
 
 """
 Test File for data processing and visualization functions
@@ -117,9 +117,46 @@ def test_BarPlot():
     assert plot_success, "Bar plot generation failed"
 
 
+def test_writeToPDF():
+    # Mock data to pass to writeToPDF
+    import pandas as pd
+
+    # Mock summary statistics DataFrame
+    Summary = pd.DataFrame(
+        {"Metric 1": [10, 20, 30], "Metric 2": [40, 50, 60]},
+        index=["Row 1", "Row 2", "Row 3"],
+    )
+
+    # Mock graph paths (assuming graphs are created and saved in the script)
+    graph1 = "stack_plot.png"
+    graph2 = "bar_plot.png"
+
+    # Call the function to generate the PDF
+    result = writeToPDF(Summary, graph1, graph2)
+
+    # Check if the PDF was created
+    assert os.path.exists("summary_statistics_report.pdf"), "PDF file was not created."
+
+    # Check if the PDF file is not empty
+    file_size = os.path.getsize("summary_statistics_report.pdf")
+    assert file_size > 0, "PDF file is empty."
+
+    # Verify the result message
+    assert result == "PDF file created", "Unexpected result message."
+
+    # Clean up: remove the generated PDF after the test
+    os.remove("summary_statistics_report.pdf")
+
+    print("All tests passed successfully!")
+
+
+# Run the test function
+test_writeToPDF()
+
 # Run all tests
 if __name__ == "__main__":
     test_CleanData()
     test_SummaryStatistics()
     test_StackPlot()
     test_BarPlot()
+    test_writeToPDF()

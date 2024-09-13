@@ -78,6 +78,7 @@ StackPlot = stackPlot(CleanData, SleepHours, Occupation)
 BarPlot = barPlot(CleanData, SleepQuality, Occupation, Gender)
 print("Everything works great!")
 
+
 def writeToPDF(Summary, graph1, graph2):
 
     # Writing data into PDF
@@ -92,10 +93,12 @@ def writeToPDF(Summary, graph1, graph2):
 
     # Add Summary Statistics as a Table
     page_width = 190  # Approximate width of the PDF page after margins
-    col_width = page_width / (len(Summary.columns) + 1)  # Divide width equally among all columns
+    col_width = page_width / (
+        len(Summary.columns) + 1
+    )  # Divide width equally among all columns
 
     # Add headers
-    pdf.set_font("Times", 'B', 12)
+    pdf.set_font("Times", "B", 12)
     pdf.cell(col_width, 10, "Metric", border=1)
     for col in Summary.columns:
         pdf.cell(col_width, 10, col, border=1)
@@ -129,5 +132,6 @@ def writeToPDF(Summary, graph1, graph2):
     # Save PDF
     pdf.output("summary_statistics_report.pdf")
     return "PDF file created"
+
 
 Output = writeToPDF(SummaryStatistics, StackPlot, BarPlot)
