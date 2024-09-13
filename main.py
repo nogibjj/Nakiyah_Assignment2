@@ -84,7 +84,7 @@ def writeToPDF(Summary, graph1, graph2):
     # Writing data into PDF
     pdf = FPDF(format="letter")
     pdf.add_page()
-    pdf.set_font("Arial", size=12)
+    pdf.set_font("Calibri", size=12)
 
     # Add Title
     pdf.set_font("Arial", "B", 14)
