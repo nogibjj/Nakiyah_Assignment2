@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import fpdf
 
 # Function reading the csv file
 def readData(df):
@@ -67,3 +68,4 @@ CleanData = cleanData(Data, RequiredColumns, DuplicateValues)
 SummaryStatistics = summaryStatistics(CleanData)
 PlotStacked = stackPlot(CleanData, SleepHours, Occupation)
 BarPlot = barPlot(CleanData, SleepQuality, Occupation, Gender)
+
