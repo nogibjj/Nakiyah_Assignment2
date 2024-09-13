@@ -19,7 +19,6 @@ def summaryStatistics(df):
     SumStats = df.describe(exclude=["O"]).reset_index()
     Median = df.median(numeric_only=True)
     Median_df = pd.DataFrame(Median).T  # Transpose to match the structure of SumStats
-    print(Median_df)
     SumStats = pd.concat([SumStats, Median_df], ignore_index=True)
     SumStats.fillna("median", inplace=True)
     SumStats.set_index("index", inplace=True)
@@ -77,7 +76,7 @@ CleanData = cleanData(Data, RequiredColumns, DuplicateValues)
 SummaryStatistics = summaryStatistics(CleanData)
 StackPlot = stackPlot(CleanData, SleepHours, Occupation)
 BarPlot = barPlot(CleanData, SleepQuality, Occupation, Gender)
-
+print("Everything works great!")
 
 def writeToPDF(Summary, graph1, graph2):
 
@@ -98,15 +97,15 @@ def writeToPDF(Summary, graph1, graph2):
     # Add headers
     pdf.set_font("Times", 'B', 12)
     pdf.cell(col_width, 10, "Metric", border=1)
-    for col in SummaryStatistics.columns:
+    for col in Summary.columns:
         pdf.cell(col_width, 10, col, border=1)
     pdf.ln()
 
     # Add rows for each metric
     pdf.set_font("Times", size=12)
-    for i, row in SummaryStatistics.iterrows():
+    for i, row in Summary.iterrows():
         pdf.cell(col_width, 10, str(i), border=1)
-        for col in SummaryStatistics.columns:
+        for col in Summary.columns:
             pdf.cell(col_width, 10, str(row[col]), border=1)
         pdf.ln()
 
