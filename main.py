@@ -111,22 +111,20 @@ def writeToPDF(Summary, graph1, graph2):
         pdf.ln()
 
     # Add Plots to PDF
+    # Add Stacked Plot to PDF
     pdf.add_page()
     pdf.ln(10)
     pdf.set_font("Times", "B", 14)
     pdf.cell(200, 10, txt="Stacked Plot", ln=True, align="C")
     pdf.ln(10)
-
-    # Add Stacked Plot to PDF
     pdf.image(graph1, x=10, y=pdf.get_y(), w=180)
     pdf.ln(10)
 
+    # Add Bar Plot to PDF
     pdf.add_page()
     pdf.set_font("Times", "B", 14)
     pdf.cell(200, 10, txt="Bar Plot", ln=True, align="C")
     pdf.ln(10)
-
-    # Add Bar Plot to PDF
     pdf.image(graph2, x=10, y=pdf.get_y(), w=180)
 
     # Save PDF
