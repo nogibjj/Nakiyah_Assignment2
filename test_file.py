@@ -124,6 +124,8 @@ def test_writeToPDF():
 
     # Clean up generated PDF
     os.remove("summary_statistics_report.pdf")
+    os.remove("stack_plot.png")
+    os.remove("bar_plot.png")
 
     print("All tests passed successfully!")
 
