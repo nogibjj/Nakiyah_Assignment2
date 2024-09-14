@@ -150,9 +150,6 @@ def test_writeToPDF():
     print("All tests passed successfully!")
 
 
-# Run the test function
-test_writeToPDF()
-
 # Run all tests
 if __name__ == "__main__":
     test_CleanData()
