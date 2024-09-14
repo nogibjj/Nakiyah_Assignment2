@@ -6,25 +6,11 @@ from fpdf import FPDF
 def readData(df):
     return pd.read_csv(df)
 
-
 # Function cleaning the data
 def cleanData(df, Columns, Duplicate):
     dfCleaned = df.drop_duplicates(subset=Duplicate, keep="first")
     dfCleaned = dfCleaned[Columns]
     return dfCleaned
-
-
-# Function reading the csv file
-def readData(df):
-    return pd.read_csv(df)
-
-
-# Function cleaning the data
-def cleanData(df, Columns, Duplicate):
-    dfCleaned = df.drop_duplicates(subset=Duplicate, keep="first")
-    dfCleaned = dfCleaned[Columns]
-    return dfCleaned
-
 
 # Creating Summary Statistics
 def summaryStatistics(df):
@@ -67,6 +53,7 @@ def barPlot(df, xVal, yVal, Segregate):
     plt.savefig("bar_plot.png")
     plt.close()
     return "bar_plot.png"
+
 
 def writeToPDF(Summary, graph1, graph2):
 
@@ -122,6 +109,7 @@ def writeToPDF(Summary, graph1, graph2):
     pdf.output("summary_statistics_report.pdf")
     return "PDF file created"
 
+
 # Initializing Variables
 Dataset = "Sleep_health_and_lifestyle_dataset.csv"
 RequiredColumns = ["Gender", "Occupation", "Sleep Duration", "Quality of Sleep"]
@@ -141,7 +129,3 @@ BarPlot = barPlot(CleanData, SleepQuality, Occupation, Gender)
 Output = writeToPDF(SummaryStatistics, StackPlot, BarPlot)
 
 print("Everything works great!")
-
-
-
-

@@ -9,45 +9,37 @@ Test File for data processing and visualization functions
 
 # Test cleanData
 def test_CleanData():
-    # Define the dummy DataFrame directly inside the function
     csv_data = """Person ID,Gender,Occupation,Sleep Duration,Quality of Sleep
                   1,Male,Engineer,7,3
                   2,Female,Doctor,6,4
                   3,Male,Engineer,8,5
                   4,Female,Lawyer,5,2"""
-
     df = pd.read_csv(StringIO(csv_data))
 
-    RequiredColumns = ["Gender", "Occupation", "Sleep Duration", "Quality of Sleep"]
-    DuplicateValues = "Person ID"
+    cleaned_df = cleanData(
+        df, ["Gender", "Occupation", "Sleep Duration", "Quality of Sleep"], "Person ID"
+    )
 
-    cleaned_df = cleanData(df, RequiredColumns, DuplicateValues)
-
-    # Check if the cleaned DataFrame has no duplicates and contains only required columns
-    assert cleaned_df.shape == (
-        4,
-        len(RequiredColumns),
-    ), "Duplicate removal or column filtering failed"
+    # Check if DataFrame has no duplicates and contains only required columns
+    assert cleaned_df.shape == (4, 4), "Duplicate removal or column filtering failed"
     assert all(
-        col in cleaned_df.columns for col in RequiredColumns
+        col in cleaned_df.columns
+        for col in ["Gender", "Occupation", "Sleep Duration", "Quality of Sleep"]
     ), "Column filtering failed"
 
 
 # Test summaryStatistics
 def test_SummaryStatistics():
-    # Define the dummy DataFrame directly inside the function
     csv_data = """Person ID,Gender,Occupation,Sleep Duration,Quality of Sleep
                   1,Male,Engineer,7,3
                   2,Female,Doctor,6,4
                   3,Male,Engineer,8,5
                   4,Female,Lawyer,5,2"""
-
     df = pd.read_csv(StringIO(csv_data))
 
     summary = summaryStatistics(df)
-    print(summary)
 
-    # Check if the summary statistics contain the required metrics for 'Sleep Duration'
+    # Validate summary statistics for 'Sleep Duration'
     assert (
         summary.loc["mean", "Sleep Duration"] == 6.5
     ), "Mean of Sleep Duration is incorrect"
@@ -58,7 +50,7 @@ def test_SummaryStatistics():
         summary.loc["median", "Sleep Duration"] == 6.5
     ), "Median of Sleep Duration is incorrect"
 
-    # Check if the summary statistics contain the required metrics for 'Quality of Sleep'
+    # Validate summary statistics for 'Quality of Sleep'
     assert (
         summary.loc["mean", "Quality of Sleep"] == 3.5
     ), "Mean of Quality of Sleep is incorrect"
@@ -72,18 +64,15 @@ def test_SummaryStatistics():
 
 # Test stackPlot
 def test_StackPlot():
-    # Define the dummy DataFrame directly inside the function
     csv_data = """Person ID,Gender,Occupation,Sleep Duration,Quality of Sleep
                   1,Male,Engineer,7,3
                   2,Female,Doctor,6,4
                   3,Male,Engineer,8,5
                   4,Female,Lawyer,5,2
                   5,Male,Teacher,7,4"""
-
     df = pd.read_csv(StringIO(csv_data))
 
     try:
-        # Test plot, but not displaying it
         stackPlot(df, "Sleep Duration", "Occupation")
         plot_success = True
     except Exception as e:
@@ -95,7 +84,6 @@ def test_StackPlot():
 
 # Test barPlot
 def test_BarPlot():
-    # Define the dummy DataFrame directly inside the function
     csv_data = """Person ID,Gender,Occupation,Sleep Duration,Quality of Sleep
                   1,Male,Engineer,7,3
                   2,Female,Doctor,6,4
@@ -103,11 +91,9 @@ def test_BarPlot():
                   4,Female,Lawyer,5,2
                   5,Male,Teacher,7,4
                   6,Female,Engineer,6,3"""
-
     df = pd.read_csv(StringIO(csv_data))
 
     try:
-        # Test plot, but not displaying it
         barPlot(df, "Quality of Sleep", "Occupation", "Gender")
         plot_success = True
     except Exception as e:
@@ -117,34 +103,26 @@ def test_BarPlot():
     assert plot_success, "Bar plot generation failed"
 
 
+# Test writeToPDF
 def test_writeToPDF():
-    # Mock data to pass to writeToPDF
-    import pandas as pd
-
     # Mock summary statistics DataFrame
     Summary = pd.DataFrame(
         {"Metric 1": [10, 20, 30], "Metric 2": [40, 50, 60]},
         index=["Row 1", "Row 2", "Row 3"],
     )
 
-    # Mock graph paths (assuming graphs are created and saved in the script)
+    # Mock graph paths
     graph1 = "stack_plot.png"
     graph2 = "bar_plot.png"
 
-    # Call the function to generate the PDF
     result = writeToPDF(Summary, graph1, graph2)
 
-    # Check if the PDF was created
+    # Validate PDF creation
     assert os.path.exists("summary_statistics_report.pdf"), "PDF file was not created."
-
-    # Check if the PDF file is not empty
-    file_size = os.path.getsize("summary_statistics_report.pdf")
-    assert file_size > 0, "PDF file is empty."
-
-    # Verify the result message
+    assert os.path.getsize("summary_statistics_report.pdf") > 0, "PDF file is empty."
     assert result == "PDF file created", "Unexpected result message."
 
-    # Clean up: remove the generated PDF after the test
+    # Clean up generated PDF
     os.remove("summary_statistics_report.pdf")
 
     print("All tests passed successfully!")
