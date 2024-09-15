@@ -46,7 +46,7 @@ def barPlot(df, xVal, yVal, Segregate):
     plt.xlabel(f"Average {xVal}")
     plt.ylabel(f"{yVal}")
     plt.title(f"Average {xVal} by {yVal} and {Segregate}")
-    plt.legend(title="Gender", loc="best")
+    plt.legend(title="Gender", bbox_to_anchor=(1.05, 1), loc="upper left")
     plt.tight_layout()
 
     # Save the plot to a file
