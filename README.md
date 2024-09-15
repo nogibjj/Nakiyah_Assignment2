@@ -22,15 +22,18 @@ In the first assignment, we developed a Python template incorporating best pract
 - barPlot(): Generates a horizontal bar plot, displaying the average of a variable segregated by another variable.
 - writeToPDF(): Combines the summary statistics and generated plots into a PDF report.
 
+
 ## Testing Make Files
 ### Make Lint
-![Make Lint](LintFile.png)
+![Make Lint](MakeLint.png)
 
 ### Make Test
 ![Make Test](TestFile.png)
 
+
 ## Printing Summary Statistics
 ![Summary Statistics](SummaryStats.png)
+
 
 ## Data Visualizations
 ### Stack Plot
