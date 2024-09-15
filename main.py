@@ -128,4 +128,5 @@ StackPlot = stackPlot(CleanData, SleepHours, Occupation)
 BarPlot = barPlot(CleanData, SleepQuality, Occupation, Gender)
 Output = writeToPDF(SummaryStatistics, StackPlot, BarPlot)
 
+print(SummaryStatistics)
 print("Everything works great!")
