@@ -4,7 +4,6 @@
 [![CI](https://github.com/nogibjj/Nakiyah_Assignment2/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Nakiyah_Assignment2/actions/workflows/cicd.yml)
 
 In the first assignment, we developed a Python template incorporating best practices for organizing a Python project. For this second assignment, we will build on that template to write a Python script that reads a CSV file, utilizes Pandas to generate descriptive statistics, and produces both statistical outputs and visualizations.
-### Run the main.py file to generate the pdf report and visualizations
 
 
 ## Repository contents:
@@ -14,7 +13,10 @@ In the first assignment, we developed a Python template incorporating best pract
 4. Makefile --> which sets rules to manage the dependencies of the source files of the programs during the compilation and linking (build) phase.
 5. Requirements.txt --> contains a list of packages/libraries needed to work on this project that can all be installed with the file.
 6. main.py --> Reads a CSV file, generates descriptive summary statistics, and produces data visualizations.
+7. main.ipynb --> Same content as main.py in a notebook format
 7. test_main.py --> Tests the functionality of main.py by verifying the accuracy of the descriptive summary statistics and the correctness of the generated visualizations
+### Run the main.py file to generate the pdf report and visualizations
+
 
 ## Functions inside the main.py
 - readData(): Reads the input CSV file and loads the data into a pandas DataFrame.
