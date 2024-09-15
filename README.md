@@ -15,8 +15,13 @@ In the first assignment, we developed a Python template incorporating best pract
 7. test_main.py --> Tests the functionality of main.py by verifying the accuracy of the descriptive summary statistics and the correctness of the generated visualizations
 
 ## Functions inside the main.py
-- readData(df): Reads a CSV file into a DataFrame.
-- cleanData(df, Columns, Duplicate): Cleans the data by removing duplicates and selecting specified columns.
-- summaryStatistics(df): Generates descriptive summary statistics, including median, for numeric columns in the DataFrame.
-- stackPlot(df, xVal, StackVal): Creates a stacked bar plot based on two categorical variables.
-- barPlot(df, xVal, yVal, Segregate): Produces a horizontal bar plot showing the average of one variable grouped by two others.
+- readData(): Reads the input CSV file and loads the data into a pandas DataFrame.
+- cleanData(): Cleans the dataset by removing duplicates and selecting relevant columns.
+- summaryStatistics(): Generates summary statistics, including the median, for the selected data.
+- stackPlot(): Creates a stacked bar plot based on the provided x and stack values.
+- barPlot(): Generates a horizontal bar plot, displaying the average of a variable segregated by another variable.
+- writeToPDF(): Combines the summary statistics and generated plots into a PDF report.
+
+![Make Lint](image.png)
+
+![Make Test](image-1.png)
