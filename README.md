@@ -15,7 +15,7 @@ In the first assignment, we developed a Python template incorporating best pract
 6. main.py --> Reads a CSV file, generates descriptive summary statistics, and produces data visualizations.
 7. main.ipynb --> Same content as main.py in a notebook format
 7. test_main.py --> Tests the functionality of main.py by verifying the accuracy of the descriptive summary statistics and the correctness of the generated visualizations
-### Run the main.py file to generate the pdf report and visualizations
+### Run the main.py file to generate the pdf report and 2 visualizations
 
 
 ## Functions inside the main.py
@@ -32,7 +32,7 @@ In the first assignment, we developed a Python template incorporating best pract
 ![Make Lint](MakeLint.png)
 
 ### Make Test
-![Make Test](TestFile.png)
+![Make Test](MakeTest.png)
 
 
 ## Printing Summary Statistics

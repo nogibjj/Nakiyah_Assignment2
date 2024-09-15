@@ -6,11 +6,13 @@ from fpdf import FPDF
 def readData(df):
     return pd.read_csv(df)
 
+
 # Function cleaning the data
 def cleanData(df, Columns, Duplicate):
     dfCleaned = df.drop_duplicates(subset=Duplicate, keep="first")
     dfCleaned = dfCleaned[Columns]
     return dfCleaned
+
 
 # Creating Summary Statistics
 def summaryStatistics(df):
