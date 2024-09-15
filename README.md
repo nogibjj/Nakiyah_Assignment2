@@ -4,6 +4,8 @@
 [![CI](https://github.com/nogibjj/Nakiyah_Assignment2/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Nakiyah_Assignment2/actions/workflows/cicd.yml)
 
 In the first assignment, we developed a Python template incorporating best practices for organizing a Python project. For this second assignment, we will build on that template to write a Python script that reads a CSV file, utilizes Pandas to generate descriptive statistics, and produces both statistical outputs and visualizations.
+### Run the main.py file to generate the pdf report and visualizations
+
 
 ## Repository contents:
 1. .devcontainer directory (a) devcontainer.json (b) Dockerfile
